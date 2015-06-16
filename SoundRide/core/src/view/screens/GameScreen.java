@@ -1,9 +1,9 @@
 package view.screens;
 
 import view.gameworld.GameRenderer;
-import model.gameobjects.Vehicle;
+import model.gameobjects.VehicleModel;
 import model.gameworld.GameWorld;
-import model.helpers.AssetLoader;
+import controller.helpers.AssetLoader;
 import controller.helpers.TouchInputHandler;
 
 import com.badlogic.gdx.Gdx;
@@ -47,7 +47,7 @@ public class GameScreen implements Screen {
 	 * Uses functions update and render from GameWorld and GameRenderer.
 	 */
 	public void render(float delta) {
-		if (Vehicle.isAlive)
+		if (VehicleModel.isAlive)
 			GameWorld.runTime += delta;
 		world.update(delta);
 		renderer.render(delta, GameWorld.runTime);

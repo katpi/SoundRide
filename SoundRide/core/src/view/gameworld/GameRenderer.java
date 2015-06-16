@@ -5,12 +5,12 @@ import view.tweenaccessors.Value;
 import view.tweenaccessors.ValueAccessor;
 import view.ui.Menu;
 import view.ui.SimpleButton;
-import model.gameobjects.Background;
-import model.gameobjects.Obstacle;
-import model.gameobjects.Vehicle;
+import controller.gameobjects.Background;
+import controller.gameobjects.Obstacle;
+import controller.gameobjects.Vehicle;
+import controller.helpers.AssetLoader;
+import controller.helpers.ScrollHandler;
 import model.gameworld.GameWorld;
-import model.helpers.AssetLoader;
-import model.helpers.ScrollHandler;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -117,9 +117,11 @@ public class GameRenderer {
 		} else if (GameWorld.isGameOver()) {
 			drawVehicle(runTime);
 			drawGameOver();
+			drawScore();
 		} else if (GameWorld.isHighScore()) {
 			drawVehicle(runTime);
 			drawHighScore();
+			drawScore();
 		}
 
 		batcher.end();
@@ -188,12 +190,11 @@ public class GameRenderer {
 	}
 
 	private void drawScore() {
-		int midPointY = 100;
 		int length = ("" + (int) GameWorld.runTime).length();
 		AssetLoader.shadow.draw(batcher, "" + (int) GameWorld.runTime,
-				68 - (3 * length), midPointY - 82);
+				125 - (3 * length), 18);
 		AssetLoader.font.draw(batcher, "" + (int) GameWorld.runTime,
-				68 - (3 * length), midPointY - 83);
+				125 - (3 * length), 17);
 	}
 
 	private void drawHighScore() {
@@ -250,6 +251,22 @@ public class GameRenderer {
 
 	@SuppressWarnings("unused")
 	private void drawObstaclesRectangles() {
+		Gdx.app.log("obstacle1.getBoundingRectangle().x",
+				obstacle1.getBoundingRectangle().x + "");
+		Gdx.app.log("obstacle1.getBoundingRectangle().y",
+				obstacle1.getBoundingRectangle().y + "");
+		Gdx.app.log("obstacle1.getBoundingRectangle().width",
+				obstacle1.getBoundingRectangle().width + "");
+		Gdx.app.log("obstacle1.getBoundingRectangle().height",
+				obstacle1.getBoundingRectangle().height + "");
+		Gdx.app.log("obstacle2.getBoundingRectangle().x",
+				obstacle2.getBoundingRectangle().x + "");
+		Gdx.app.log("obstacle2.getBoundingRectangle().y",
+				obstacle2.getBoundingRectangle().y + "");
+		Gdx.app.log("obstacle2.getBoundingRectangle().width",
+				obstacle2.getBoundingRectangle().width + "");
+		Gdx.app.log("obstacle2.getBoundingRectangle().height",
+				obstacle2.getBoundingRectangle().height + "");
 		shapeRenderer.begin(ShapeType.Filled);
 		shapeRenderer.setColor(Color.RED);
 		shapeRenderer.rect(obstacle1.getBoundingRectangle().x,

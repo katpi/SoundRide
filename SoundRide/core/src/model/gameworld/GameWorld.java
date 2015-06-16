@@ -2,10 +2,11 @@ package model.gameworld;
 
 import com.badlogic.gdx.Gdx;
 
-import model.gameobjects.Vehicle;
-import model.helpers.AssetLoader;
-import model.helpers.ScrollHandler;
+import model.gameobjects.VehicleModel;
+import controller.gameobjects.Vehicle;
+import controller.helpers.AssetLoader;
 import controller.helpers.AudioInputAsyncHelper;
+import controller.helpers.ScrollHandler;
 
 /**
  * Keeps and updates the game objects.
@@ -33,14 +34,14 @@ public class GameWorld {
 
 	public static void restart() {
 		currentState = GameState.READY;
-		Vehicle.isAlive = true;
+		VehicleModel.isAlive = true;
 		vehicle.onRestart(AssetLoader.positionsOfObjects.get(2));
 		scroller.onRestart();
 		currentState = GameState.READY;
 	}
 
 	public void update(float delta) {
-		if (Vehicle.isAlive)
+		if (VehicleModel.isAlive)
 			runTime += delta;
 		switch (currentState) {
 		case READY:
@@ -64,7 +65,7 @@ public class GameWorld {
 		vehicle.update(delta);
 		scroller.update(delta);
 
-		if (Vehicle.isAlive && scroller.collides(vehicle)) {
+		if (VehicleModel.isAlive && scroller.collides(vehicle)) {
 			// Clean up on game over
 			scroller.stop();
 			AssetLoader.dead.play();
@@ -77,9 +78,9 @@ public class GameWorld {
 			}
 		}
 
-		if (Vehicle.isAlive && audioInputAsyncHelper.isDone()) {
-			 Gdx.app.log("Game World AnalysisResult",
-			 audioInputAsyncHelper.getAnalysisResult().toString());
+		if (VehicleModel.isAlive && audioInputAsyncHelper.isDone()) {
+			Gdx.app.log("Game World AnalysisResult", audioInputAsyncHelper
+					.getAnalysisResult().toString());
 			vehicle.changePositionFromSound(audioInputAsyncHelper
 					.getAnalysisResult());
 			audioInputAsyncHelper.startFftAnalysis();

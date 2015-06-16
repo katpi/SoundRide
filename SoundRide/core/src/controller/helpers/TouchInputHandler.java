@@ -1,10 +1,10 @@
 package controller.helpers;
 
-import model.gameobjects.Vehicle;
 import model.gameworld.GameWorld;
 import view.ui.Menu;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
+import controller.gameobjects.Vehicle;
 
 public class TouchInputHandler implements InputProcessor {
 	private Vehicle myVehicle;
@@ -12,8 +12,7 @@ public class TouchInputHandler implements InputProcessor {
 	private float scaleFactorX;
 	private float scaleFactorY;
 
-	public TouchInputHandler(float scaleFactorX,
-			float scaleFactorY) {
+	public TouchInputHandler(float scaleFactorX, float scaleFactorY) {
 		// myVehicle now represents the gameWorld's Vehicle.
 		myVehicle = GameWorld.getVehicle();
 

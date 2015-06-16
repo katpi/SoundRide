@@ -1,9 +1,9 @@
 package com.soundride.game.desktop;
 
-import model.game.SRGame;
-
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+
+import controller.game.SRGame;
 /**
  * Launcher for the desktop version of the game (there are no others, but it's easy to create 
  * other ones - for android, ios etc.

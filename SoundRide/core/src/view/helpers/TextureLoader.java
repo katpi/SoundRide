@@ -12,28 +12,29 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  */
 public class TextureLoader {
 	public static Texture texture, logoTexture;
-	public static TextureRegion logo, zbLogo, background, playButtonUp, playButtonDown;
+	public static TextureRegion logo, zbLogo, background, playButtonUp,
+			playButtonDown;
 	public static Animation vehicleAnimation;
 	public static TextureRegion vehicle1, vehicle2;
 	public static TextureRegion obstacle, bonusBlue, bonusRed;
 
 	public static void load() {
 		logoTexture = new Texture(Gdx.files.internal("data/logo.png"));
-        logoTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		logoTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
-        logo = new TextureRegion(logoTexture, 0, 0, 492, 300);
+		logo = new TextureRegion(logoTexture, 0, 0, 492, 300);
 
-        texture = new Texture(Gdx.files.internal("data/texture.png"));
+		texture = new Texture(Gdx.files.internal("data/texture.png"));
 		texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
-        
-        playButtonUp = new TextureRegion(texture, 400, 300, 30, 16);
-        playButtonDown = new TextureRegion(texture, 429, 300, 30, 16);
-        playButtonUp.flip(false, true);
-        playButtonDown.flip(false, true);
 
-        zbLogo = new TextureRegion(texture, 100,300, 235, 40);
-        zbLogo.flip(false, true);
-		
+		playButtonUp = new TextureRegion(texture, 400, 300, 30, 16);
+		playButtonDown = new TextureRegion(texture, 429, 300, 30, 16);
+		playButtonUp.flip(false, true);
+		playButtonDown.flip(false, true);
+
+		zbLogo = new TextureRegion(texture, 100, 300, 235, 40);
+		zbLogo.flip(false, true);
+
 		texture = new Texture(Gdx.files.internal("data/texture.png"));
 		texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
