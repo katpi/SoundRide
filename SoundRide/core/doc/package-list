@@ -1,0 +1,8 @@
+com.soundride.game.desktop
+controller.helpers
+model.gameobjects
+model.gameworld
+tests
+view.game
+view.gameworld
+view.screens
